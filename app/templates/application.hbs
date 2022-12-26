@@ -71,13 +71,15 @@
             different weight or pick another bar.
         </div>
     {{else}}
-        <Results
-            @selectedBar={{this.selectedBar}}
-            @adjustedWeight={{this.adjustedWeight}}
-            @isNoWeightBar={{this.isNoWeightBar}}
-            @totalWeight={{this.totalWeight}}
-            @platesNeeded={{this.platesNeeded}}
-        />
+        {{#if this.weight}}
+            <Results
+                @selectedBar={{this.selectedBar}}
+                @adjustedWeight={{this.adjustedWeight}}
+                @isNoWeightBar={{this.isNoWeightBar}}
+                @totalWeight={{this.totalWeight}}
+                @platesNeeded={{this.platesNeeded}}
+            />
+        {{/if}}
     {{/if}}
 </main>
 
