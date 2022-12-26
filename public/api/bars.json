@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "type": "bar",
+            "id": "barbell-lg",
+            "attributes": {
+                "name": "Large Barbell",
+                "weight": 45,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "barbell-sm",
+            "attributes": {
+                "name": "Small Barbell",
+                "weight": 35,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "trapbar-sm",
+            "attributes": {
+                "name": "Small Trap Bar",
+                "weight": 50,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "trapbar-lg",
+            "attributes": {
+                "name": "Large Trap Bar",
+                "weight": 85,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "safety",
+            "attributes": {
+                "name": "Safety Bar",
+                "weight": 60,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "football",
+            "attributes": {
+                "name": "Football Bar",
+                "weight": 45,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "axle",
+            "attributes": {
+                "name": "Axle Bar",
+                "weight": 25,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "zbar",
+            "attributes": {
+                "name": "Z Bar",
+                "weight": 20,
+                "unit": "lb"
+            }
+        }
+    ]
+}

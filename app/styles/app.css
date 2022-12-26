@@ -1,3 +1,21 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+    .layout-col {
+        @apply w-full flex flex-col items-start gap-4;
+    }
+
+    .layout-col--start {
+        @apply justify-start;
+    }
+
+    .layout-col--center {
+        @apply justify-center;
+    }
+}
+
+.ember-power-select-multiple-option {
+    @apply bg-blue-700 dark:bg-blue-300 text-white dark:text-slate-800 rounded p-1;
+}

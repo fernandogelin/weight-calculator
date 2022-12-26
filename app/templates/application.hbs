@@ -1,5 +1,77 @@
-{{page-title "WeightCalc"}}
+{{page-title 'WeightCalc'}}
 
-<Button>TEST BUTTON</Button>
+<main class='h-full layout-col text-zinc-700 dark:text-zinc-50'>
+    <header class='layout-col'>
+        <fieldset class='layout-col'>
+            <label class='w-full'>
+                <span class='font-bold'>Bar:</span>
+                <PowerSelect
+                    class='w-full p-2 dark:bg-zinc-800'
+                    @options={{this.model.bars}}
+                    @selected={{this.selectedBar}}
+                    @onChange={{this.handleBarChange}}
+                    as |option|
+                >
+                    {{option.name}}
+                    ({{option.weight}}{{option.unit}}s)
+                </PowerSelect>
+            </label>
+            <label class='w-full'>
+                <PowerSelectMultiple
+                    class='w-full p-2 dark:bg-zinc-800'
+                    @searchEnabled={{false}}
+                    @options={{this.model.plates}}
+                    @selected={{this.plateSet}}
+                    @placeholder='Select some plates...'
+                    @onChange={{fn (mut this.plateSet)}}
+                    as |plate|
+                >
+                    {{plate.name}}&nbsp; ({{plate.weight}}lbs)
+                </PowerSelectMultiple>
+            </label>
+            <label class='w-full'>
+                <span class='font-bold'>Total weight:</span>
+                <Input
+                    class='w-full p-2 ember-power-select-trigger dark:bg-zinc-800'
+                    placeholder='Enter total weight'
+                    @type='text'
+                    @value={{this.weight}}
+                />
+            </label>
+            <UiButton
+                type='submit'
+                {{on 'click' this.calculatePlatesNeeded}}
+            >Get Weights</UiButton>
+        </fieldset>
+    </header>
+    <article class='layout-col'>
+        <header>
+            <p class=''>
+                <span class='font-bold'>Bar weight:</span>
+                {{this.selectedBar.weight}}lbs
+            </p>
+            <p class=''>
+                <span class='font-bold'>Plates weight:</span>
+                {{this.weightPerSide}}lbs per side
+            </p>
+        </header>
+        <div class='flex flex-row gap-2 flex-wrap'>
+            {{#each this.platesNeeded as |plate|}}
+                <figure class='relative {{plate.width}} h-24'>
+                    <HeroIcon
+                        class='w-full h-full stroke-[3px]
+                            {{plate.colors.stroke}}
+                            {{plate.colors.fill}}'
+                        @icon='stop-circle'
+                    />
+                    <span
+                        class='p-1 text-white font-bold rounded absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]
+                            {{plate.colors.background}}'
+                    >{{plate.weight}}</span>
+                </figure>
+            {{/each}}
+        </div>
+    </article>
+</main>
 
 {{outlet}}
