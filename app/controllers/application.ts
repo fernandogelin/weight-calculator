@@ -1,9 +1,8 @@
-import { A } from '@ember/array';
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import BarModel from 'weight-calc/models/bar';
-import PlateModel from 'weight-calc/models/plate';
+import type BarModel from 'weight-calc/models/bar';
+import type PlateModel from 'weight-calc/models/plate';
 import { ApplicationModel } from 'weight-calc/routes/application';
 
 export default class ApplicationController extends Controller {
@@ -15,15 +14,30 @@ export default class ApplicationController extends Controller {
     @tracked
     platesNeeded!: Array<PlateModel>;
 
-    @tracked
-    plateSet: Array<PlateModel> = this.model.plates.slice();
-
-    @tracked selectedBar = this.model?.bars.find(
-        (bar: BarModel) => bar.id === 'barbell-sm'
+    @tracked selectedBar: BarModel | undefined = this.model?.bars.find(
+        (bar: BarModel) => bar.id === 'no-weight'
     );
 
+    get plateSet(): Array<PlateModel> {
+        const initialPlateSet = this.model.plates.slice();
+        const legPressPlateSet = initialPlateSet.filter(
+            (plate: PlateModel) => ![55, 35, 15].includes(plate.weight)
+        );
+        return this.selectedBar!.id === 'leg-press'
+            ? legPressPlateSet
+            : initialPlateSet;
+    }
+
+    get isNoWeightBar(): boolean {
+        return this.selectedBar?.id === 'no-weight';
+    }
+
     get weightPerSide(): number {
-        return (parseInt(this.weight) - this.selectedBar!.weight) / 2 || 0;
+        const denominator = this.selectedBar!.id === 'no-weight' ? 1 : 2;
+        return (
+            (parseInt(this.weight) - this.selectedBar!.weight) / denominator ||
+            0
+        );
     }
 
     get plateArraySum() {
@@ -39,7 +53,6 @@ export default class ApplicationController extends Controller {
                 .slice()
                 .sort((a, b) => b.weight - a.weight)
                 .find((p: PlateModel) => weightNeeded >= p.weight);
-            console.log(weightNeeded, plate?.weight);
             if (plate) {
                 plateArray.push(plate);
                 weightNeeded -= plate.weight;
@@ -50,9 +63,5 @@ export default class ApplicationController extends Controller {
 
     @action handleBarChange(value: BarModel): void {
         this.selectedBar = value;
-    }
-
-    @action updatePlateSet(plate: PlateModel): void {
-        console.log(plate);
     }
 }

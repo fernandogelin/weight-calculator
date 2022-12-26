@@ -17,6 +17,7 @@
                 </PowerSelect>
             </label>
             <label class='w-full'>
+                <span class='font-bold'>Plate set:</span>
                 <PowerSelectMultiple
                     class='w-full p-2 dark:bg-zinc-800'
                     @searchEnabled={{false}}
@@ -52,7 +53,8 @@
             </p>
             <p class=''>
                 <span class='font-bold'>Plates weight:</span>
-                {{this.weightPerSide}}lbs per side
+                {{this.weightPerSide}}lbs
+                {{if this.isNoWeightBar 'total' 'per side'}}
             </p>
         </header>
         <div class='flex flex-row gap-2 flex-wrap'>

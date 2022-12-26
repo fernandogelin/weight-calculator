@@ -22,22 +22,22 @@ export default class PlateModel extends Model {
     }
 
     get width() {
-        return this.weight > 10 ? 'w-24' : 'w-20';
+        return this.weight >= 10 ? 'w-24' : 'w-20';
     }
 
-    // stroke-gray-600 dark:stroke-gray-400
+    // stroke-stone-600 dark:stroke-stone-400
     // stroke-slate-600 dark:stroke-slate-400
     // stroke-yellow-600 dark:stroke-yellow-400
     // stroke-green-600 dark:stroke-green-400
     // stroke-blue-600 dark:stroke-blue-400
     // stroke-red-600 dark:stroke-red-400
-    // bg-gray-600 dark:bg-gray-400
+    // bg-stone-600 dark:bg-stone-400
     // bg-slate-600 dark:bg-slate-400
     // bg-yellow-600 dark:bg-yellow-400
     // bg-green-600 dark:bg-green-400
     // bg-blue-600 dark:bg-blue-400
     // bg-red-600 dark:bg-red-400
-    // fill-gray-500 dark:fill-gray-300
+    // fill-stone-500 dark:fill-stone-300
     // fill-slate-500 dark:fill-slate-300
     // fill-yellow-500 dark:fill-yellow-300
     // fill-green-500 dark:fill-green-300

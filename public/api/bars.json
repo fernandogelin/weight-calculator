@@ -2,6 +2,15 @@
     "data": [
         {
             "type": "bar",
+            "id": "no-weight",
+            "attributes": {
+                "name": "No Bar (e.g. Sled, Landmine, Belt Squat)",
+                "weight": 0,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
             "id": "barbell-lg",
             "attributes": {
                 "name": "Large Barbell",
@@ -69,6 +78,15 @@
             "attributes": {
                 "name": "Z Bar",
                 "weight": 20,
+                "unit": "lb"
+            }
+        },
+        {
+            "type": "bar",
+            "id": "leg-press",
+            "attributes": {
+                "name": "Leg Press",
+                "weight": 0,
                 "unit": "lb"
             }
         }
