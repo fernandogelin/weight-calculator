@@ -18,18 +18,18 @@ export default class ApplicationController extends Controller {
         (bar: BarModel) => bar.id === 'no-weight'
     );
 
-    get plateSet(): Array<PlateModel> {
-        const initialPlateSet = this.model.plates.slice();
-        const legPressPlateSet = initialPlateSet.filter(
-            (plate: PlateModel) => ![55, 35, 15].includes(plate.weight)
-        );
-        return this.selectedBar!.id === 'leg-press'
-            ? legPressPlateSet
-            : initialPlateSet;
-    }
+    @tracked plateSet: Array<PlateModel> = this.model.plates.slice();
+
+    @tracked legPressPlateSet: Array<PlateModel> = this.model.plates
+        .slice()
+        .filter((plate: PlateModel) => ![55, 35, 15].includes(plate.weight));
 
     get isNoWeightBar(): boolean {
         return this.selectedBar?.id === 'no-weight';
+    }
+
+    get isLegPress(): boolean {
+        return this.selectedBar?.id === 'leg-press';
     }
 
     get weightPerSide(): number {

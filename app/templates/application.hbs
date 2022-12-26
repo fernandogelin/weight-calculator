@@ -18,17 +18,31 @@
             </label>
             <label class='w-full'>
                 <span class='font-bold'>Plate set:</span>
-                <PowerSelectMultiple
-                    class='w-full p-2 dark:bg-zinc-800'
-                    @searchEnabled={{false}}
-                    @options={{this.model.plates}}
-                    @selected={{this.plateSet}}
-                    @placeholder='Select some plates...'
-                    @onChange={{fn (mut this.plateSet)}}
-                    as |plate|
-                >
-                    {{plate.name}}&nbsp; ({{plate.weight}}lbs)
-                </PowerSelectMultiple>
+                {{#if this.isLegPress}}
+                    <PowerSelectMultiple
+                        class='w-full p-2 dark:bg-zinc-800'
+                        @searchEnabled={{false}}
+                        @options={{this.legPressPlateSet}}
+                        @selected={{this.legPressPlateSet}}
+                        @placeholder='Select some plates...'
+                        @onChange={{fn (mut this.legPressPlateSet)}}
+                        as |plate|
+                    >
+                        {{plate.name}}&nbsp; ({{plate.weight}}lbs)
+                    </PowerSelectMultiple>
+                {{else}}
+                    <PowerSelectMultiple
+                        class='w-full p-2 dark:bg-zinc-800'
+                        @searchEnabled={{false}}
+                        @options={{this.plateSet}}
+                        @selected={{this.plateSet}}
+                        @placeholder='Select some plates...'
+                        @onChange={{fn (mut this.plateSet)}}
+                        as |plate|
+                    >
+                        {{plate.name}}&nbsp; ({{plate.weight}}lbs)
+                    </PowerSelectMultiple>
+                {{/if}}
             </label>
             <label class='w-full'>
                 <span class='font-bold'>Total weight:</span>
