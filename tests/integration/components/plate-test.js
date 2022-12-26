@@ -3,22 +3,22 @@ import { setupRenderingTest } from 'weight-calc/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | button', function (hooks) {
+module('Integration | Component | plate', function (hooks) {
     setupRenderingTest(hooks);
 
     test('it renders', async function (assert) {
         // Set any properties with this.set('myProperty', 'value');
         // Handle any actions with this.set('myAction', function(val) { ... });
 
-        await render(hbs`<Button />`);
+        await render(hbs`<Plate />`);
 
         assert.dom(this.element).hasText('');
 
         // Template block usage:
         await render(hbs`
-      <Button>
+      <Plate>
         template block text
-      </Button>
+      </Plate>
     `);
 
         assert.dom(this.element).hasText('template block text');

@@ -45,7 +45,7 @@
                 {{/if}}
             </label>
             <label class='w-full'>
-                <span class='font-bold'>Total weight:</span>
+                <span class='font-bold'>Target weight:</span>
                 <Input
                     class='w-full p-2 ember-power-select-trigger dark:bg-zinc-800'
                     placeholder='Enter total weight'
@@ -59,35 +59,26 @@
             >Get Weights</UiButton>
         </fieldset>
     </header>
-    <article class='layout-col'>
-        <header>
-            <p class=''>
-                <span class='font-bold'>Bar weight:</span>
-                {{this.selectedBar.weight}}lbs
-            </p>
-            <p class=''>
-                <span class='font-bold'>Plates weight:</span>
-                {{this.weightPerSide}}lbs
-                {{if this.isNoWeightBar 'total' 'per side'}}
-            </p>
-        </header>
-        <div class='flex flex-row gap-2 flex-wrap'>
-            {{#each this.platesNeeded as |plate|}}
-                <figure class='relative {{plate.width}} h-24'>
-                    <HeroIcon
-                        class='w-full h-full stroke-[3px]
-                            {{plate.colors.stroke}}
-                            {{plate.colors.fill}}'
-                        @icon='stop-circle'
-                    />
-                    <span
-                        class='p-1 text-white font-bold rounded absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]
-                            {{plate.colors.background}}'
-                    >{{plate.weight}}</span>
-                </figure>
-            {{/each}}
+    {{#if this.isBarHeavier}}
+        <div
+            class='bg-yellow-200 dark:bg-yellow-800 p-3 rounded flex flex-col items-center'
+        >
+            <HeroIcon
+                class='w-10 stroke-yellow-800 dark:stroke-yellow-200'
+                @icon='exclamation-triangle'
+            />
+            The bar is heavier than your target weight. Please, enter a
+            different weight or pick another bar.
         </div>
-    </article>
+    {{else}}
+        <Results
+            @selectedBar={{this.selectedBar}}
+            @adjustedWeight={{this.adjustedWeight}}
+            @isNoWeightBar={{this.isNoWeightBar}}
+            @totalWeight={{this.totalWeight}}
+            @platesNeeded={{this.platesNeeded}}
+        />
+    {{/if}}
 </main>
 
 {{outlet}}

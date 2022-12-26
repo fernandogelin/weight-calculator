@@ -1,0 +1,22 @@
+<article class='layout-col'>
+    <header>
+        <p class=''>
+            <span class='font-bold'>Bar weight:</span>
+            {{@selectedBar.weight}}lbs
+        </p>
+        <p class=''>
+            <span class='font-bold'>Plates weight:</span>
+            {{@adjustedWeight}}lbs
+            {{if @isNoWeightBar 'total' 'per side'}}
+        </p>
+        <p class=''>
+            <span class='font-bold'>Total adjusted weight:</span>
+            {{@totalWeight}}lbs
+        </p>
+    </header>
+    <div class='flex flex-row gap-2 flex-wrap'>
+        {{#each @platesNeeded as |plate|}}
+            <Plate @plate={{plate}} />
+        {{/each}}
+    </div>
+</article>

@@ -12,6 +12,9 @@ export default class ApplicationController extends Controller {
     weight!: string;
 
     @tracked
+    adjustedWeight!: number;
+
+    @tracked
     platesNeeded!: Array<PlateModel>;
 
     @tracked selectedBar: BarModel | undefined = this.model?.bars.find(
@@ -32,10 +35,20 @@ export default class ApplicationController extends Controller {
         return this.selectedBar?.id === 'leg-press';
     }
 
+    get denominator(): number {
+        return this.selectedBar!.id === 'no-weight' ? 1 : 2;
+    }
+
     get weightPerSide(): number {
-        const denominator = this.selectedBar!.id === 'no-weight' ? 1 : 2;
         return (
-            (parseInt(this.weight) - this.selectedBar!.weight) / denominator ||
+            (parseInt(this.weight) - this.selectedBar!.weight) /
+                this.denominator || 0
+        );
+    }
+
+    get totalWeight(): number {
+        return (
+            this.adjustedWeight * this.denominator + this.selectedBar!.weight ||
             0
         );
     }
@@ -44,12 +57,21 @@ export default class ApplicationController extends Controller {
         return this.platesNeeded?.reduce((acc, obj) => acc + obj.weight, 0);
     }
 
+    get isBarHeavier(): boolean {
+        return this.selectedBar!.weight > parseFloat(this.weight);
+    }
+
     @action calculatePlatesNeeded() {
         let plateArray: Array<PlateModel> = [];
-        let weightNeeded = this.weightPerSide;
+        let weightNeeded = 1.25 * Math.ceil(this.weightPerSide / 1.25);
+        this.set('adjustedWeight', weightNeeded);
+
+        const plateSet = this.isLegPress
+            ? this.legPressPlateSet
+            : this.plateSet;
 
         while (weightNeeded > 0) {
-            const plate = this.plateSet
+            const plate = plateSet
                 .slice()
                 .sort((a, b) => b.weight - a.weight)
                 .find((p: PlateModel) => weightNeeded >= p.weight);
