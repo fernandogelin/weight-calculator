@@ -1,9 +1,0 @@
-{
-    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-    "name": "WeightCalc",
-    "short_name": "WeightCalc",
-    "start_url": ".",
-    "display": "fullscreen",
-    "background_color": "#fff",
-    "description": "App to calculate plates needed for weight lifting."
-}
