@@ -19,6 +19,18 @@ module.exports = function (defaults) {
             // include only certain types (outline, solid, mini)
             types: ['outline'],
         },
+        'ember-cli-image-transformer': {
+            images: [
+                {
+                    inputFilename: 'public/icons/barbell.svg',
+                    outputFileName: 'appicon-',
+                    convertTo: 'png',
+                    background: { r: 29, g: 78, b: 216, alpha: 0 },
+                    destination: 'icons/',
+                    sizes: [64, 192, 512],
+                },
+            ],
+        },
     });
 
     // Use `app.import` to add additional libraries to the generated
