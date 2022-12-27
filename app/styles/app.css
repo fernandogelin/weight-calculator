@@ -17,7 +17,7 @@
 }
 
 .ember-power-select-multiple-option {
-    @apply bg-blue-700 dark:bg-yellow-400 text-white dark:text-slate-800 rounded p-1;
+    @apply bg-blue-700 dark:bg-yellow-400 text-white dark:text-slate-800 rounded;
 }
 
 .with-border {
