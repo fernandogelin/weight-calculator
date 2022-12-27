@@ -68,7 +68,7 @@ export default class ApplicationController extends Controller {
     @action calculatePlatesNeeded() {
         let plateArray: Array<PlateModel> = [];
         let weightNeeded = 1.25 * Math.ceil(this.weightPerSide / 1.25);
-        this.set('adjustedWeight', weightNeeded);
+        this.adjustedWeight = weightNeeded;
 
         const plateSet = this.isLegPress
             ? this.legPressPlateSet
