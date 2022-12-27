@@ -1,86 +1,41 @@
 {{page-title 'WeightCalc'}}
 
 <main class='h-full layout-col text-zinc-700 dark:text-zinc-50'>
-    <header class='layout-col'>
-        <fieldset class='layout-col'>
-            <label class='w-full'>
-                <span class='font-bold'>Bar:</span>
-                <PowerSelect
-                    class='w-full p-2 dark:bg-zinc-800'
-                    @options={{this.model.bars}}
-                    @selected={{this.selectedBar}}
-                    @onChange={{this.handleBarChange}}
-                    as |option|
-                >
-                    {{option.name}}
-                    ({{option.weight}}{{option.unit}}s)
-                </PowerSelect>
-            </label>
-            <label class='w-full'>
-                <span class='font-bold'>Plate set:</span>
-                {{#if this.isLegPress}}
-                    <PowerSelectMultiple
-                        class='w-full p-2 dark:bg-zinc-800'
-                        @searchEnabled={{false}}
-                        @options={{this.legPressPlateSet}}
-                        @selected={{this.legPressPlateSet}}
-                        @placeholder='Select some plates...'
-                        @onChange={{fn (mut this.legPressPlateSet)}}
-                        as |plate|
-                    >
-                        {{plate.name}}&nbsp; ({{plate.weight}}lbs)
-                    </PowerSelectMultiple>
-                {{else}}
-                    <PowerSelectMultiple
-                        class='w-full p-2 dark:bg-zinc-800'
-                        @searchEnabled={{false}}
-                        @options={{this.plateSet}}
-                        @selected={{this.plateSet}}
-                        @placeholder='Select some plates...'
-                        @onChange={{fn (mut this.plateSet)}}
-                        as |plate|
-                    >
-                        {{plate.name}}&nbsp; ({{plate.weight}}lbs)
-                    </PowerSelectMultiple>
-                {{/if}}
-            </label>
-            <label class='w-full'>
-                <span class='font-bold'>Target weight:</span>
-                <Input
-                    class='w-full p-2 ember-power-select-trigger dark:bg-zinc-800'
-                    placeholder='Enter total weight'
-                    @type='text'
-                    @value={{this.weight}}
-                />
-            </label>
-            <UiButton
-                type='submit'
-                {{on 'click' this.calculatePlatesNeeded}}
-            >Get Weights</UiButton>
-        </fieldset>
-    </header>
-    {{#if this.isBarHeavier}}
-        <div
-            class='bg-yellow-200 dark:bg-yellow-800 p-3 rounded flex flex-col items-center w-full'
-        >
-            <HeroIcon
-                class='w-10 stroke-yellow-800 dark:stroke-yellow-200'
-                @icon='exclamation-triangle'
-            />
-            The bar is heavier than your target weight. Please, enter a
-            different weight or pick another bar.
-        </div>
-    {{else}}
-        {{#if this.weight}}
-            <Results
+    <article class='layout-col h-full'>
+        {{#if this.isSettingsOpen}}
+            <header
+                class='text-3xl font-bold self-center pb-4 text-blue-700 dark:text-yellow-400'
+            >Weight Calculator</header>
+            <Controls
+                @bars={{this.model.bars}}
+                @calculatePlatesNeeded={{this.calculatePlatesNeeded}}
+                @handleBarChange={{this.handleBarChange}}
+                @isBarHeavier={{this.isBarHeavier}}
+                @isLegPress={{this.isLegPress}}
+                @legPressPlateSet={{this.legPressPlateSet}}
+                @plates={{this.model.plates}}
+                @plateSet={{this.plateSet}}
                 @selectedBar={{this.selectedBar}}
-                @adjustedWeight={{this.adjustedWeight}}
-                @isNoWeightBar={{this.isNoWeightBar}}
-                @totalWeight={{this.totalWeight}}
-                @platesNeeded={{this.platesNeeded}}
+                @weight={{this.weight}}
             />
         {{/if}}
-    {{/if}}
+        {{#if this.isResultsOpen}}
+            {{#if this.weight}}
+                <header
+                    class='text-3xl font-bold self-center pb-4 text-blue-700 dark:text-yellow-400'
+                >Get your plates!</header>
+                <Results
+                    @adjustedWeight={{this.adjustedWeight}}
+                    @isNoWeightBar={{this.isNoWeightBar}}
+                    @platesNeeded={{this.platesNeeded}}
+                    @selectedBar={{this.selectedBar}}
+                    @totalWeight={{this.totalWeight}}
+                    @weightPerSide={{this.weightPerSide}}
+                />
+                <Button {{on 'click' this.backToSettings}}>Back</Button>
+            {{/if}}
+        {{/if}}
+    </article>
 </main>
 
 {{outlet}}

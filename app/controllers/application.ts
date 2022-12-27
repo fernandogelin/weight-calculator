@@ -17,6 +17,10 @@ export default class ApplicationController extends Controller {
     @tracked
     platesNeeded!: Array<PlateModel>;
 
+    @tracked isSettingsOpen: boolean = true;
+
+    @tracked isResultsOpen: boolean = false;
+
     @tracked selectedBar: BarModel | undefined = this.model?.bars.find(
         (bar: BarModel) => bar.id === 'no-weight'
     );
@@ -81,9 +85,16 @@ export default class ApplicationController extends Controller {
             }
         }
         this.platesNeeded = plateArray;
+        this.isSettingsOpen = false;
+        this.isResultsOpen = true;
     }
 
     @action handleBarChange(value: BarModel): void {
         this.selectedBar = value;
+    }
+
+    @action backToSettings(): void {
+        this.isResultsOpen = false;
+        this.isSettingsOpen = true;
     }
 }

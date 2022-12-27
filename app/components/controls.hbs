@@ -1,0 +1,60 @@
+<fieldset class='layout-col h-full'>
+    <label class='w-full'>
+        <span class='font-bold'>Bar:</span>
+        <PowerSelect
+            class='w-full p-2 dark:bg-zinc-800'
+            @options={{@bars}}
+            @selected={{@selectedBar}}
+            @onChange={{@handleBarChange}}
+            as |option|
+        >
+            {{option.name}}
+            ({{option.weight}}{{option.unit}}s)
+        </PowerSelect>
+    </label>
+    <label class='w-full'>
+        <span class='font-bold'>Plate set:</span>
+        {{#if @isLegPress}}
+            <PowerSelectMultiple
+                class='w-full p-2 dark:bg-zinc-800'
+                @searchEnabled={{false}}
+                @options={{@plates}}
+                @selected={{@legPressPlateSet}}
+                @placeholder='Select some plates...'
+                @onChange={{fn (mut @legPressPlateSet)}}
+                as |plate|
+            >
+                {{plate.name}}&nbsp; ({{plate.weight}}lbs)
+            </PowerSelectMultiple>
+        {{else}}
+            <PowerSelectMultiple
+                class='w-full p-2 dark:bg-zinc-800'
+                @searchEnabled={{false}}
+                @options={{@plates}}
+                @selected={{@plateSet}}
+                @placeholder='Select some plates...'
+                @onChange={{fn (mut @plateSet)}}
+                as |plate|
+            >
+                {{plate.name}}&nbsp; ({{plate.weight}}lbs)
+            </PowerSelectMultiple>
+        {{/if}}
+    </label>
+    <label class='w-full'>
+        <span class='font-bold'>Target weight:</span>
+        <Input
+            class='w-full p-2 ember-power-select-trigger dark:bg-zinc-800'
+            placeholder='Enter total weight'
+            @type='number'
+            @value={{@weight}}
+            required='true'
+        />
+    </label>
+</fieldset>
+{{#if @isBarHeavier}}
+    <Alert />
+{{else}}
+    <Button {{on 'click' @calculatePlatesNeeded}} disabled={{not @weight}}>
+        Get Weights
+    </Button>
+{{/if}}

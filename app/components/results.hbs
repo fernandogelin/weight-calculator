@@ -1,22 +1,23 @@
-<article class='layout-col'>
-    <header>
-        <p class=''>
-            <span class='font-bold'>Bar weight:</span>
-            {{@selectedBar.weight}}lbs
-        </p>
-        <p class=''>
-            <span class='font-bold'>Plates weight:</span>
-            {{@adjustedWeight}}lbs
-            {{if @isNoWeightBar 'total' 'per side'}}
-        </p>
-        <p class=''>
-            <span class='font-bold'>Total adjusted weight:</span>
-            {{@totalWeight}}lbs
-        </p>
+<section class='h-full layout-col layout-col--center'>
+    <header class='flex flex-col gap-2 w-full'>
+        <SummaryItem
+            @name={{@selectedBar.name}}
+            @value={{@selectedBar.weight}}
+        />
+        <SummaryItem @name='Total adjusted weight' @value={{@totalWeight}} />
     </header>
-    <div class='flex flex-row gap-2 flex-wrap'>
-        {{#each @platesNeeded as |plate|}}
-            <Plate @plate={{plate}} />
-        {{/each}}
-    </div>
-</article>
+    <section class='with-border layout-col layout-col--center'>
+        <span class='font-bold'>{{if
+                @isNoWeightBar
+                'Total weight'
+                'Weight per side'
+            }}:
+            {{@weightPerSide}}lbs
+        </span>
+        <div class='flex flex-row gap-2 flex-wrap items-center justify-center'>
+            {{#each @platesNeeded as |plate|}}
+                <Plate @plate={{plate}} />
+            {{/each}}
+        </div>
+    </section>
+</section>

@@ -4,7 +4,7 @@
 
 @layer components {
     .layout-col {
-        @apply w-full flex flex-col items-start gap-4;
+        @apply w-full flex flex-col gap-2;
     }
 
     .layout-col--start {
@@ -12,10 +12,14 @@
     }
 
     .layout-col--center {
-        @apply justify-center;
+        @apply justify-center items-center;
     }
 }
 
 .ember-power-select-multiple-option {
-    @apply bg-blue-700 dark:bg-blue-300 text-white dark:text-slate-800 rounded p-1;
+    @apply bg-blue-700 dark:bg-yellow-400 text-white dark:text-slate-800 rounded p-1;
+}
+
+.with-border {
+    @apply border border-zinc-400 dark:border-zinc-500 rounded p-4;
 }
