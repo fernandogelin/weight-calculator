@@ -5,8 +5,15 @@
         <title>WeightCalc</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="WeightCalc" />
 
         {{content-for "head"}}
+
+        <link rel="manifest" href="{{rootURL}}manifest.json" />
 
         <link
             integrity=""
@@ -22,7 +29,7 @@
         {{content-for "head-footer"}}
     </head>
 
-    <body class="p-4 h-full w-full dark:bg-zinc-700">
+    <body class="p-4 h-full w-full dark:bg-zinc-700" ontouchstart="">
         {{content-for "body"}}
 
         <script src="{{rootURL}}assets/vendor.js"></script>
