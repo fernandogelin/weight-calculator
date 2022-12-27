@@ -7,7 +7,7 @@
                 type='button'
                 class='-mr-[6px] w-full flex flex-row items-center justify-end text-blue-700 dark:text-yellow-400 disabled:opacity-30'
                 {{on 'click' this.calculatePlatesNeeded}}
-                disabled={{not this.weight}}
+                disabled={{this.isCalculationDisabled}}
             >
                 <span class='text-2xl font-semibold'>Calculate</span>
                 <HeroIcon class='w-8 stroke-2' @icon='chevron-right' />

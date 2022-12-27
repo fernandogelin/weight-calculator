@@ -65,6 +65,10 @@ export default class ApplicationController extends Controller {
         return this.selectedBar!.weight > parseFloat(this.weight);
     }
 
+    get isCalculationDisabled(): boolean {
+        return !!this.weight || this.isBarHeavier;
+    }
+
     @action calculatePlatesNeeded() {
         let plateArray: Array<PlateModel> = [];
         let weightNeeded = 1.25 * Math.ceil(this.weightPerSide / 1.25);
