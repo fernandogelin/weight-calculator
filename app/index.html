@@ -243,7 +243,10 @@
         {{content-for "head-footer"}}
     </head>
 
-    <body ontouchstart="">
+    <body
+        ontouchstart=""
+        class="p-4 h-full w-full dark:bg-zinc-900 bg-zinc-100"
+    >
         {{content-for "body"}}
 
         <script src="{{rootURL}}assets/vendor.js"></script>
