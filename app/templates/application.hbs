@@ -9,8 +9,8 @@
                 {{on 'click' this.calculatePlatesNeeded}}
                 disabled={{not this.weight}}
             >
-                <span class='text-xl font-bold'>Calculate</span>
-                <HeroIcon class='w-7 stroke-2' @icon='chevron-right' />
+                <span class='text-2xl font-semibold'>Calculate</span>
+                <HeroIcon class='w-8 stroke-2' @icon='chevron-right' />
             </button>
             <header class='my-2 text-3xl font-bold'>Weight Calculator</header>
             <Controls
@@ -28,17 +28,15 @@
         {{/if}}
         {{#if this.isResultsOpen}}
             {{#if this.weight}}
-                <header class='flex flex-col'>
-                    <button
-                        type='button'
-                        class='-ml-[6px] w-full flex flex-row items-center text-blue-700 dark:text-yellow-400'
-                        {{on 'click' this.backToSettings}}
-                    >
-                        <HeroIcon class='w-7 stroke-2' @icon='chevron-left' />
-                        <span class='text-xl font-bold'>Back</span>
-                    </button>
-                    <span class='my-2 text-3xl font-bold'>Get your plates!</span>
-                </header>
+                <button
+                    type='button'
+                    class='-ml-[6px] w-full flex flex-row items-center text-blue-700 dark:text-yellow-400'
+                    {{on 'click' this.backToSettings}}
+                >
+                    <HeroIcon class='w-8 stroke-2' @icon='chevron-left' />
+                    <span class='text-2xl font-semibold'>Back</span>
+                </button>
+                <header class='my-2 text-3xl font-bold'>Get your plates!</header>
                 <Results
                     @adjustedWeight={{this.adjustedWeight}}
                     @isNoWeightBar={{this.isNoWeightBar}}
