@@ -1,4 +1,7 @@
-<fieldset class='layout-col h-full'>
+{{#if @isBarHeavier}}
+    <Alert />
+{{/if}}
+<fieldset class='w-full flex flex-col gap-8 h-full'>
     <label class='w-full'>
         <span class='font-bold'>Bar:</span>
         <PowerSelect
@@ -51,10 +54,3 @@
         />
     </label>
 </fieldset>
-{{#if @isBarHeavier}}
-    <Alert />
-{{else}}
-    <Button {{on 'click' @calculatePlatesNeeded}} disabled={{not @weight}}>
-        Get Weights
-    </Button>
-{{/if}}

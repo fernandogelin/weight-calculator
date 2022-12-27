@@ -1,12 +1,9 @@
-<section class='h-full layout-col layout-col--center'>
-    <header class='flex flex-col gap-2 w-full'>
-        <SummaryItem
-            @name={{@selectedBar.name}}
-            @value={{@selectedBar.weight}}
-        />
-        <SummaryItem @name='Total adjusted weight' @value={{@totalWeight}} />
-    </header>
-    <section class='with-border layout-col layout-col--center'>
+<section class='h-full layout-col place-content-evenly'>
+    <SummaryItem @name={{@selectedBar.name}} @value={{@selectedBar.weight}} />
+    <SummaryItem @name='Total adjusted weight' @value={{@totalWeight}} />
+    <section
+        class='rounded p-4 border-0 dark:bg-zinc-800 bg-white layout-col layout-col--center'
+    >
         <span class='font-bold'>{{if
                 @isNoWeightBar
                 'Total weight'

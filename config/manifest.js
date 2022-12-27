@@ -11,8 +11,6 @@ module.exports = function (/* environment, appConfig */) {
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        background_color: '#1D4ED8',
-        theme_color: '#1D4ED8',
         icons: [
             {
                 src: '/icons/barbell.svg',

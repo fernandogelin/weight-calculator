@@ -6,6 +6,7 @@ body {
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    @apply p-4 h-full w-full dark:bg-zinc-900 bg-zinc-100;
 }
 
 @layer components {
@@ -26,6 +27,6 @@ body {
     @apply bg-blue-700 dark:bg-yellow-400 text-white dark:text-slate-800 rounded;
 }
 
-.with-border {
-    @apply border border-zinc-400 dark:border-zinc-500 rounded p-4;
+.ember-power-select-trigger {
+    border: none;
 }

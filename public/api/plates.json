@@ -4,7 +4,7 @@
             "type": "plate",
             "id": "one",
             "attributes": {
-                "name": "Little Plate",
+                "name": "Little",
                 "weight": 1.25,
                 "unit": "lb",
                 "color": "slate"
@@ -14,7 +14,7 @@
             "type": "plate",
             "id": "two",
             "attributes": {
-                "name": "Small Plate",
+                "name": "Small",
                 "weight": 2.5,
                 "unit": "lb",
                 "color": "slate"
@@ -24,7 +24,7 @@
             "type": "plate",
             "id": "five",
             "attributes": {
-                "name": "Medium Plate",
+                "name": "Medium",
                 "weight": 5,
                 "unit": "lb",
                 "color": "slate"
@@ -34,7 +34,7 @@
             "type": "plate",
             "id": "ten",
             "attributes": {
-                "name": "Gray Plate",
+                "name": "Gray",
                 "weight": 10,
                 "unit": "lb",
                 "color": "stone"
@@ -44,7 +44,7 @@
             "type": "plate",
             "id": "fifteen",
             "attributes": {
-                "name": "Black Plate",
+                "name": "Black",
                 "weight": 15,
                 "unit": "lb",
                 "color": "slate"
@@ -54,7 +54,7 @@
             "type": "plate",
             "id": "twenty-five",
             "attributes": {
-                "name": "Green Plate",
+                "name": "Green",
                 "weight": 25,
                 "unit": "lb",
                 "color": "green"
@@ -64,7 +64,7 @@
             "type": "plate",
             "id": "thirty-five",
             "attributes": {
-                "name": "Yellow Plate",
+                "name": "Yellow",
                 "weight": 35,
                 "unit": "lb",
                 "color": "yellow"
@@ -74,7 +74,7 @@
             "type": "plate",
             "id": "forty-five",
             "attributes": {
-                "name": "Blue Plate",
+                "name": "Blue",
                 "weight": 45,
                 "unit": "lb",
                 "color": "blue"
@@ -84,7 +84,7 @@
             "type": "plate",
             "id": "fifty-five",
             "attributes": {
-                "name": "Red Plate",
+                "name": "Red",
                 "weight": 55,
                 "unit": "lb",
                 "color": "red"
