@@ -15,7 +15,12 @@ module.exports = function (defaults) {
             // default type to use if not specified to the HeroIcon component
             defaultType: 'outline',
             // include only certain matching icons (array of string or RegExp)
-            include: [/.*/],
+            include: [
+                'chevron-left',
+                'chevron-right',
+                'exclamation-triangle',
+                'stop-circle',
+            ],
             // include only certain types (outline, solid, mini)
             types: ['outline'],
         },

@@ -5,8 +5,8 @@ module.exports = function (/* environment, appConfig */) {
     // supported properties
 
     return {
-        name: 'WightCalc',
-        short_name: 'WightCalc',
+        name: 'WeightCalc',
+        short_name: 'WeightCalc',
         description: '',
         start_url: '/',
         scope: '/',
