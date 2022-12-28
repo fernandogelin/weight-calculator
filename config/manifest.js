@@ -8,7 +8,7 @@ module.exports = function (/* environment, appConfig */) {
         name: 'WeightCalc',
         short_name: 'WeightCalc',
         description: '',
-        start_url: '/',
+        start_url: 'https://plates.gelin.one',
         scope: '/',
         display: 'standalone',
         icons: [
