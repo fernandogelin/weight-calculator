@@ -66,7 +66,7 @@ export default class ApplicationController extends Controller {
     }
 
     get isCalculationDisabled(): boolean {
-        return !!this.weight || this.isBarHeavier;
+        return !this.weight || this.isBarHeavier;
     }
 
     @action calculatePlatesNeeded() {
