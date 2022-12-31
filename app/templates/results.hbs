@@ -1,35 +1,38 @@
 {{page-title 'Results'}}
-<LinkTo
-    @route='index'
-    class='-ml-[6px] w-full flex flex-row items-center text-blue-700 dark:text-yellow-400'
->
-    <HeroIcon class='w-8 stroke-2' @icon='chevron-left' />
-    <span class='text-2xl font-semibold'>Back</span>
-</LinkTo>
-<header class='my-2 text-3xl font-bold'>Results</header>
-<section class='h-full layout-col place-content-evenly'>
-    <SummaryItem
-        @name={{this.weights.selectedBar.name}}
-        @value={{this.weights.selectedBar.weight}}
-    />
-    <SummaryItem
-        @name='Total adjusted weight'
-        @value={{this.weights.totalWeight}}
-    />
-    <section
-        class='rounded p-4 border-0 dark:bg-zinc-800 bg-white layout-col layout-col--center'
-    >
-        <span class='font-bold'>{{if
-                this.isNoWeightBar
-                'Total weight'
-                'Weight per side'
-            }}:
-            {{this.weights.adjustedWeight}}lbs
-        </span>
-        <div class='flex flex-row gap-2 flex-wrap items-center justify-center'>
-            {{#each this.weights.platesNeeded as |plate|}}
-                <Plate @plate={{plate}} />
-            {{/each}}
-        </div>
-    </section>
-</section>
+<Layout as |l|>
+    <l.navigation @route='index'>
+        <HeroIcon class='w-8 stroke-2' @icon='chevron-left' />
+        <span class='text-2xl font-semibold'>Back</span>
+    </l.navigation>
+    <l.header>Results</l.header>
+    <l.main>
+        <section class='h-full layout-col place-content-evenly'>
+            <SummaryItem
+                @name={{this.weights.selectedBar.name}}
+                @value={{this.weights.selectedBar.weight}}
+            />
+            <SummaryItem
+                @name='Total adjusted weight'
+                @value={{this.weights.totalWeight}}
+            />
+            <section
+                class='rounded p-4 border-0 dark:bg-zinc-800 bg-white layout-col layout-col--center'
+            >
+                <span class='font-bold'>{{if
+                        this.isNoWeightBar
+                        'Total weight'
+                        'Weight per side'
+                    }}:
+                    {{this.weights.adjustedWeight}}lbs
+                </span>
+                <div
+                    class='flex flex-row gap-2 flex-wrap items-center justify-center'
+                >
+                    {{#each this.weights.platesNeeded as |plate|}}
+                        <Plate @plate={{plate}} />
+                    {{/each}}
+                </div>
+            </section>
+        </section>
+    </l.main>
+</Layout>
