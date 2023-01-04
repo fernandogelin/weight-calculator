@@ -49,7 +49,7 @@ export default class WeightsService extends Service {
     }
 
     get isCalculationDisabled(): boolean {
-        return !this.weight || this.isBarHeavier;
+        return !this.weight || this.isBarHeavier || this.weight === '0';
     }
 
     get denominator(): number {

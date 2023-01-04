@@ -8,6 +8,10 @@ body {
     -webkit-touch-callout: none;
 }
 
+a {
+    @apply text-blue-700 dark:text-yellow-400;
+}
+
 @layer components {
     .layout-col {
         @apply w-full flex flex-col gap-2;
