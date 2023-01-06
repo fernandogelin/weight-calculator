@@ -21,10 +21,11 @@ module.exports = function (/* environment, appConfig */) {
                 sizes: '64x64',
                 targets: ['favicon'],
             },
-            ...[192, 512].map((size) => ({
-                src: `/icons/appicon-${size}.png`,
-                sizes: `${size}x${size}`,
-            })),
+            {
+                src: '/icons/appicon-512.png',
+                sizes: '512x512',
+                puprpose: 'maskable',
+            },
         ],
     };
 };
