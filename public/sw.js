@@ -32,7 +32,7 @@ function cache(request, response) {
 }
 
 self.addEventListener('fetch', (event) => {
-    Cache-First Strategy
+    // Cache-First Strategy
     event.respondWith(
         caches
             .match(event.request) // check if the request has already been cached
