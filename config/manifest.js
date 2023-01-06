@@ -24,7 +24,7 @@ module.exports = function (/* environment, appConfig */) {
             {
                 src: '/icons/appicon-512.png',
                 sizes: '512x512',
-                puprpose: 'maskable',
+                purpose: 'maskable',
             },
         ],
     };
