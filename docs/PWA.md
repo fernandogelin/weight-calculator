@@ -13,7 +13,7 @@ marp: true
   - installable
     - users can install the app and open in a standlaone window
   - linkable
-    - app is linkable and discoverable without the need for an app store
+    - app is linkable and discoverable without the need of an app store
   - universal
     - one codebase works in any device
 
